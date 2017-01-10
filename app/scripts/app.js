@@ -13,24 +13,29 @@ angular
     'ngAnimate',
     'ngCookies',
     'ngResource',
-    'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'LocalStorageModule'
+    'LocalStorageModule',
+    'ui.router'
   ])
-  .config(function ($routeProvider) {
-    $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
+  .config(['$stateProvider','$urlRouterProvider',function ($stateProvider,$urlRouterProvider) {
+    $urlRouterProvider.otherwise('/login');
+    $stateProvider
+       .state('login',{
+        url: '/login',
+        templateUrl:'views/main.html',
         controller: 'MainCtrl',
         controllerAs: 'main'
       })
-      .when('/about', {
-        templateUrl: 'views/about.html',
+      .state('about',{
+        url: '/about',
+        templateUrl:'views/about.html',
         controller: 'AboutCtrl',
         controllerAs: 'about'
       })
-      .otherwise({
-        redirectTo: '/'
-      });
+  }])
+  .run(function($rootScope, $location){
+        $rootScope.location = $location;
   });
+
+
