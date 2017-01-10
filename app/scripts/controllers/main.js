@@ -10,10 +10,10 @@
 angular.module('minventoryApp')
   .controller('MainCtrl', ['$scope', '$http','$location', 'AuthenticationService', function ($scope, $http, $location, AuthenticationService){
      $scope.login = function() {
-        AutheticationService.login(
+        AuthenticationService.login(
             $scope.username, $scope.password,
             function(response){
-                $location.path('/');
+                $location.path('/about');
             },
             function(response){
                 alert('Something went wrong with the login process. Try again later!');
@@ -24,8 +24,7 @@ angular.module('minventoryApp')
     $scope.email = '';
     $scope.password = '';
 
-    if(userService.checkLog())
-        $location.path('/');
-
-
+    if(AuthenticationService.checkLog()){
+        $location.path('/about');
+    }
   }]);

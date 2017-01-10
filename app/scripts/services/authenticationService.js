@@ -8,15 +8,17 @@
  * Controller of the minventoryApp
  */
 angular.module('minventoryApp')
-	.factory('authenticationService', ['$http', 'localStorageService', function($http, localStorageService) {
+	.factory('AuthenticationService', ['$http', 'localStorageService', function($http, localStorageService) {
 		
 		/* Function to verify if user is logged in*/
 		
 		function checkLog() {
-			if(localStorageService.get('token'))
+			if(localStorageService.get('token')){
             	return true;
-        	else
+            }
+        	else{
             	return false;
+            }
         }
 
         /* Function to login*/
@@ -50,7 +52,6 @@ angular.module('minventoryApp')
 
     	return {
         	checkLog: checkLog,
-        	signup: signup,
         	login: login,
         	logout: logout,
         	getCurrentToken: getCurrentToken
