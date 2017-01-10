@@ -1,0 +1,31 @@
+'use strict';
+
+/**
+ * @ngdoc function
+ * @name minventoryApp.controller:MainCtrl
+ * @description
+ * # MainCtrl
+ * Controller of the minventoryApp
+ */
+angular.module('minventoryApp')
+  .controller('MainCtrl', ['$scope', '$http','$location', 'AuthenticationService', function ($scope, $http, $location, AuthenticationService){
+     $scope.login = function() {
+        AutheticationService.login(
+            $scope.username, $scope.password,
+            function(response){
+                $location.path('/');
+            },
+            function(response){
+                alert('Something went wrong with the login process. Try again later!');
+            }
+        );
+    }
+
+    $scope.email = '';
+    $scope.password = '';
+
+    if(userService.checkLog())
+        $location.path('/');
+
+
+  }]);
