@@ -9,6 +9,7 @@
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="bower_components/components-font-awesome/css/font-awesome.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
@@ -20,8 +21,10 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
+    <div ng-include="'/views/navigationBar.html'" ng-if="location.path() !== '/login'"></div>
+    <div ng-include="'/views/sideBar.html'" ng-if="location.path() !== '/login'"></div>
     <div class="container">
-    <div ui-view=""></div>
+      <div ui-view=""></div>
     </div>
 
     <div class="footer">
@@ -64,7 +67,8 @@
         <script src="scripts/app.js"></script>
         <script src="scripts/services/authenticationService.js"></script>
         <script src="scripts/controllers/main.js"></script>
-        <script src="scripts/controllers/about.js"></script>
+        <script src="scripts/controllers/user.js"></script>
+        <script src="scripts/controllers/manageUser.js"></script>
         <!-- endbuild -->
 </body>
 </html>

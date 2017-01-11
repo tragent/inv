@@ -27,15 +27,25 @@ angular
         controller: 'MainCtrl',
         controllerAs: 'main'
       })
-      .state('about',{
-        url: '/about',
-        templateUrl:'views/about.html',
-        controller: 'AboutCtrl',
-        controllerAs: 'about'
+      .state('users',{
+        url: '/users',
+        templateUrl:'views/user.html',
+        controller: 'UserCtrl',
+        controllerAs: 'user'
+      })
+      .state('manageUser', {
+        url: '/users/:id',
+        templateUrl:'views/manageUser.html',
+        controller: 'ManageUserCtrl'
       })
   }])
   .run(function($rootScope, $location){
         $rootScope.location = $location;
+
+        /*Nav bar controller*/
+        $rootScope.isActive = function (viewLocation) {
+        return viewLocation === $location.path();
+    };
   });
 
 
