@@ -1,0 +1,17 @@
+<!-- side nav -->
+<div class="nav-side-menu">
+  <div class="brand">Brand Logo</div>
+  <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+  <div>
+  <div class="menu-list">
+    <ul id="menu-content" class="menu-content collapse out">
+      <li ng-class="{ active: isActive('/users')}"><a ui-sref="users"> Users</a>
+      </li>
+      <li ng-class="{ active: isActive('/customers')}"><a ui-sref="customer"> Customers</a>
+      </li>
+      <li ng-class="{ active: isActive('/farms')}"><a ui-sref="supplier"> Suppliers</a>
+      </li>
+    </ul>
+  </div>
+  </div>
+</div>
