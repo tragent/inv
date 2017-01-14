@@ -10,6 +10,9 @@
 angular.module('minventoryApp')
   .controller('ManageUserCtrl', ['$scope', '$stateParams', function ($scope, $stateParams){
 
+    //Default params
+    $scope.submitted = false;
+
   	//check if state parameter is set
   	if ($stateParams.id) {
 
@@ -23,7 +26,10 @@ angular.module('minventoryApp')
               telephone : "(+237) 671 514 344",
               role : "Sales agent"
             };
+
+        // Display value for an exist user
         $scope.action = "Update";
+        $scope.currentUserAccount = $scope.user.username;
 
   	} else {
   		// Display empty input fields
@@ -36,7 +42,20 @@ angular.module('minventoryApp')
               telephone : "",
               role : ""
             };
+      // Display values for a new user
       $scope.action = "Submit";
+      $scope.currentUserAccount  = "New user";
   	}
+
+    // Update or create a user on submit form
+    $scope.manageUserAccount = function(){
+      $scope.submitted = true;
+      if ($scope.userForm.$valid) {
+        console.log("user form is valid " + $scope.user.role);
+      } else {
+        console.log("user form is invalid");
+      }
+          
+    };
 
   }]);

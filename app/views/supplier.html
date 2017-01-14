@@ -1,0 +1,48 @@
+<div class="contianer suppliers">
+	<h2>
+		<span>Suppliers</span>
+		<a style="float: right" class="btn btn-primary btn-lg" ui-sref="manageSupplier">Add supplier
+			<i class="fa fa-plus" aria-hidden="true"></i>
+		</a>
+	</h2>
+	
+	<!-- Search bar -->
+	<div>
+	  <form name="searchForm" >
+	    <div class="form-group col-sm-7 col-sm-offset-2">
+	      <div class="input-group col-md-12">
+	        <input type="text" class="form-control input-lg" placeholder="Search for Supplier" 
+	        	ng-model="search" />
+	        <span class="input-group-btn">
+	          <button class="btn btn-info btn-lg" type="submit">
+	            <i class="glyphicon glyphicon-search"></i>
+	          </button>
+	        </span>
+	      </div>
+	    </div>
+	  </form>
+	</div>
+
+	<!-- Table of suppliers -->
+	<div class="table-responsive col-md-12 box">
+	<table class="table table-hover">
+	    <thead>
+	      <tr>
+	      	<th>No</th>
+	        <th>Name</th>
+	        <th>Email</th>
+	        <th>Phone number</th>
+	      </tr>
+	    </thead>
+	    <tbody>
+	      <tr ng-repeat="supplier in suppliers" ng-click="editSupplier(supplier.id)">
+	        <td>{{$index + 1}}</td>
+	        <td ng-bind="(supplier.firstName) + ' ' + (supplier.lastName)"></td>
+	        <td ng-bind="supplier.email"></td>
+	        <td ng-bind="supplier.telephone"></td>
+	      </tr>
+	    </tbody>
+  	</table>
+  	</div>
+
+</div>

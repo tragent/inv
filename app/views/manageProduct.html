@@ -1,0 +1,60 @@
+<div style="margin-top: 7%">
+	<ol class="breadcrumb" style="font-size: 20px">
+	    <li><h2><a ui-sref="products">Product</a></h2></li>
+	    <li class="active" ng-bind="currentProduct"></li>
+	</ol>
+
+	<div class="container-fluid box" style="padding: 5%">
+		<form class="col-md-12" name="productForm" ng-submit="manageProduct()" novalidate>
+		<div class="col-md-4 col-md-offset-1">
+			<div>
+				<img src="images/productImage.png" id="profilePic">
+			</div>
+			<div class="form-group col-md-12">
+				<label for="name">Name :</label>
+				<input type="text" class="form-control" name="name" ng-model="product.name" required autocomplete="off">
+				<span style="color: red" ng-show="productForm.name.$error.required && submitted">
+					Product name is required
+				</span>
+			</div>
+		</div>
+		<div class="col-md-5">
+			<div class="form-group col-md-10 col-md-offset-2">
+				<label for="unitPrice">Unit price:</label>
+				<input type="number" class="form-control" name="unitPrice" ng-model="product.unitPrice" 
+					required autocomplete="off">
+				<span style="color: red" ng-show="productForm.name.$error.required && submitted">
+					Unit price is required
+				</span>
+
+			</div>
+			<div class="form-group col-md-10 col-md-offset-2">
+				<label for="quantity">Quantity :</label>
+				<input type="number" class="form-control" name="quantity" ng-model="product.quantity" 
+					required autocomplete="off">
+				<span style="color: red" ng-show="productForm.quantity.$error.required && submitted">
+					Quantity is required
+				</span>
+			</div>
+			<div class="form-group col-md-10 col-md-offset-2">
+			    <label for="category">Category :</label>
+				<select ng-model="product.category"  class="form-control">
+				   <option>Dairy product</option>
+				</select>
+			</div>
+		</div>
+		<div class="form-group col-md-10 col-md-offset-1">
+		  <label for="description">Description:</label>
+		  <textarea class="form-control" rows="5" id="description"></textarea>
+			<div style="padding-top: 2%">
+				<span class="">
+					<a ui-sref="products" type="reset" class="btn btn-danger" style="margin-left: 50%">
+						Cancel</a>
+					<button type="submit" class="btn btn-primary" style="margin-left: 5%" ng-bind="action"></button>
+				</span>
+			</div>
+		</div>
+		</form>
+	</div>
+
+</div>

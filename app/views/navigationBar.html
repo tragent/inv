@@ -4,13 +4,21 @@
       <a class="navbar-brand" href="#">Inventory Management</a>
     </div>
     <ul class="nav navbar-nav">
-      <li><a ui-sref="user">Users</a></li>
+      <li><a ui-sref="users">Users</a></li>
       <li><a ui-sref="inventory">Inventory</a></li>
       <li><a ui-sref="sales">Sales</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
-      <li><a ui-sref="profile"><i class="fa fa-user icons" aria-hidden="true"></i> Profile</a></li>
-      <li><a ui-sref="logout"><i class="fa fa-sign-out icons" aria-hidden="true"></i> Logout</a></li>
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown">
+          <img style="-webkit-filter: invert(100%);" src="images/profilepic.png" width="20" height="20">
+          <span>Username</span> 
+        </a>
+        <ul class="dropdown-menu">
+          <li><a ui-sref="profile"><i class="fa fa-user icons" aria-hidden="true"></i> Profile</a></li>
+          <li><a ui-sref="logout"><i class="fa fa-sign-out icons" aria-hidden="true"></i> Logout</a></li>
+        </ul>
+      </li>
     </ul>
   </div>
 </nav>
