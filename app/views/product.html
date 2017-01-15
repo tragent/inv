@@ -1,8 +1,8 @@
-<div class="contianer users">
+<div class="contianer products">
 	<h2>
-		<span>Users</span>
-		<a style="float: right" class="btn btn-primary btn-lg" ui-sref="manageUser">Add user
-			<i class="fa fa-user-plus" aria-hidden="true"></i></a>
+		<span>Products</span>
+		<a style="float: right" class="btn btn-primary btn-lg" ui-sref="manageProducts">Add product
+			<i class="fa fa-plus" aria-hidden="true"></i></a>
 	</h2>
 	<!--<div class="row">
       <div class="col-lg-offset-10 col-lg-4">
@@ -14,7 +14,7 @@
 	  <form name="searchForm" >
 	    <div class="form-group col-sm-7 col-sm-offset-2">
 	      <div class="input-group col-md-12">
-	        <input type="text" class="form-control input-lg" placeholder="Search for user by username" 
+	        <input type="text" class="form-control input-lg" placeholder="Search for product" 
 	        	ng-model="search" />
 	        <span class="input-group-btn">
 	          <button class="btn btn-info btn-lg" type="submit">
@@ -26,29 +26,28 @@
 	  </form>
 	</div>
 
-	<!-- Table of users -->
+	<!-- Table of products -->
 	<div class="table-responsive col-md-12 box">
 	<table class="table table-hover">
 	    <thead>
 	      <tr>
 	      	<th>No</th>
 	        <th>Name</th>
-	        <th>Username</th>
-	        <th>Email</th>
-	        <th>Phone number</th>
-	        <th>Role</th>
+	        <th>Unit price</th>
+	        <th>Category</th>
+	        <th>Quantity</th>
+	        <th>Status</th>
 	      </tr>
 	    </thead>
 	    <tbody>
-	      <tr ng-repeat="user in users" ng-click="editUser(user.id)">
+	      <tr ng-repeat="product in products" ng-click="editProduct(product.id)">
 	        <td>{{$index + 1}}</td>
-	        <td ng-bind="(user.firstName) + ' ' + (user.lastName)"></td>
-	        <td ng-bind="user.username"></td>
-	        <td ng-bind="user.email"></td>
-	        <td ng-bind="user.telephone"></td>
-	        <td ng-bind="user.role"></td>
+	        <td ng-bind="product.name"></td>
+	        <td ng-bind="product.unitPrice"></td>
+	        <td ng-bind="product.category"></td>
+	        <td ng-bind="product.quantity"></td>
 	        <td>
-	        	<button type="submit" ng-class="isActive(user.enable)" ng-click="activateUser(user.enable)" class="btn table-btn" ng-bind="enable"></button>
+	        	<button type="submit" ng-class="enableProduct(product.enable)" class="btn table-btn" ng-bind="enable"></button>
 	        </td>
 	      </tr>
 	    </tbody>

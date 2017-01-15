@@ -37,14 +37,24 @@ angular.module('minventoryApp')
       $location.path('/users/' + userId);
     };
 
-    // Enable/disable user account
-    $scope.enableUser = function (enable){
+    // Set color and content of button for an enable/disable user account
+    $scope.isActive = function (enable){
 
       if (enable) {
+        $scope.enable = "Enable";
         return "btn-primary";
       } else {
+        $scope.enable = "Disable";
         return "btn-danger";
       }
 
-    }
+    };
+
+    //Update activation of a user's account
+    $scope.activateUser = function(enable){
+
+      // code to update user's 
+
+    };
+
   }]);

@@ -3,13 +3,42 @@
   <div class="brand">Brand Logo</div>
   <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
   <div>
-  <div class="menu-list">
+  <!-- nav bar to manage users -->
+  <div class="menu-list" ng-if="navBar() == 'user'">
     <ul id="menu-content" class="menu-content collapse out">
-      <li ng-class="{ active: isActive('/users')}"><a ui-sref="users"> Users</a>
+      <li ng-class="{ active: isActive('/users')}"><a ui-sref="users" > 
+        <i class="fa fa-user " style="font-size: 20px" aria-hidden="true"></i>
+        <span style="padding-left: 5%">Users</span></a>
       </li>
-      <li ng-class="{ active: isActive('/customers')}"><a ui-sref="customer"> Customers</a>
+      <li ng-class="{ active: isActive('/customers')}"><a ui-sref="customers">
+        <i class="fa fa-users" style="font-size: 20px" aria-hidden="true"></i>
+        <span style="padding-left: 2%">Customers</span></a>
       </li>
-      <li ng-class="{ active: isActive('/farms')}"><a ui-sref="supplier"> Suppliers</a>
+      <li ng-class="{ active: isActive('/suppliers')}"><a ui-sref="suppliers">
+        <i class="fa fa-truck" style="font-size: 20px" aria-hidden="true"></i>
+        <span style="padding-left: 2%">Suppliers</span></a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- navbar to manage purchase -->
+  <div class="menu-list" ng-if="navBar() == 'inventory'">
+    <ul id="menu-content" class="menu-content collapse out">
+      <li ng-class="{ active: isActive('/products')}"><a ui-sref="products" > 
+        <i class="fa fa-lemon-o" style="font-size: 20px" aria-hidden="true"></i>
+        <span style="padding-left: 5%">Products</span></a>
+      </li>
+      <li ng-class="{ active: isActive('/inventory')}"><a ui-sref="inventory">
+        <i class="fa fa-list-alt" style="font-size: 20px" aria-hidden="true"></i>
+        <span style="padding-left: 2%">Inventory</span></a>
+      </li>
+      <li ng-class="{ active: isActive('/purchase')}"><a ui-sref="purchase">
+        <i class="fa fa-money" style="font-size: 20px" aria-hidden="true"></i>
+        <span style="padding-left: 2%">Purchase product</span></a>
+      </li>
+      <li ng-class="{ active: isActive('/transactions')}"><a ui-sref="purchaseTransactions">
+        <i class="fa fa-exchange" style="font-size: 20px" aria-hidden="true"></i>
+        <span style="padding-left: 2%">Transaction orders</span></a>
       </li>
     </ul>
   </div>

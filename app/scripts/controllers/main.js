@@ -13,7 +13,7 @@ angular.module('minventoryApp')
         AuthenticationService.login(
             $scope.username, $scope.password,
             function(response){
-                $location.path('/about');
+                $location.path('/users');
             },
             function(response){
                 alert('Something went wrong with the login process. Try again later!');
