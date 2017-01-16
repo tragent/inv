@@ -162,7 +162,7 @@ tr {
   font-size: 16px;
   cursor: pointer;
 }
-.btn {
+.search {
     padding: 10px 20px;
     border-radius: 0;
 }
@@ -178,4 +178,32 @@ tr {
   height: 70%;
   margin-bottom: 5%;
   margin-left:15%
+}
+
+/*Sales page*/
+
+#saleSearch {
+  padding-top: 5%;
+}
+
+#salesHeader {
+  margin-left: 2%;
+}
+
+.salesProduct {
+  margin-top: 10%;
+  
+
+}
+
+.addProduct {
+  width: 20%;
+  height: 2.5em;
+  text-align: right;
+  border-radius: 5%;
+
+}
+
+.btnSale {
+  padding:5px 10px;
 }

@@ -2,15 +2,15 @@
 
 /**
  * @ngdoc function
- * @name minventoryApp.controller:MainCtrl
+ * @name minventoryApp.controller:AuthenticationService
  * @description
- * # MainCtrl
- * Controller of the minventoryApp
+ * # AuthenticationService
+ * Service of the minventoryApp
  */
 angular.module('minventoryApp')
 	.factory('AuthenticationService', ['$http', 'localStorageService', function($http, localStorageService) {
 		
-		/* Function to verify if user is logged in*/
+        /* Function to verify if user is logged in*/
 		
 		function checkLog() {
 			if(localStorageService.get('token')){
@@ -20,26 +20,23 @@ angular.module('minventoryApp')
             	return false;
             }
         }
-
         /* Function to login*/
         function login(username, password, onSuccess, onError){
-	        $http.post('', // api here 
+	        $http.post('http://localhost:8080/api/v1/authenticate?username='+ username +'&password=' + password, 
 	        {
 	            username: username,
-	            password: password
+	            password: password,
 	        }).
 	        then(function(response) {
-
-	            localStorageService.set('token', response.data.token);
+                console.log('sucess');
+	            localStorageService.set('token', response.headers('Authorization'));
 	            onSuccess(response);
-
-	        }, function(response) {
+	        }, function(response) { 
 
 	            onError(response);
-
 	        });
     	}
-
+        
     	/* Function to logout*/
     	function logout(){
         	localStorageService.remove('token');
@@ -55,5 +52,5 @@ angular.module('minventoryApp')
         	login: login,
         	logout: logout,
         	getCurrentToken: getCurrentToken
-    	}
+    	};
 	}]);

@@ -22,7 +22,7 @@
     <![endif]-->
 
     <div ng-include="'/views/navigationBar.html'" ng-if="location.path() !== '/login'"></div>
-    <div ng-include="'/views/sideBar.html'" ng-if="location.path() !== '/login'"></div>
+    <div ng-include="'/views/sideBar.html'" ng-if="(location.path() !== '/login')|| ($location.path() !== '/sales')"></div>
     <div class="container">
       <div ui-view=""></div>
     </div>
@@ -66,9 +66,11 @@
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
         <script src="scripts/services/authenticationService.js"></script>
+        <script src="scripts/services/saleService.js"></script>
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/user.js"></script>
         <script src="scripts/controllers/manageUser.js"></script>
+        <script src="scripts/controllers/sales.js"></script>
         <!-- endbuild -->
 </body>
 </html>

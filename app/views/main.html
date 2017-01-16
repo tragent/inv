@@ -5,12 +5,14 @@
       <label for="username">Username</label>
       <input ng-model="username" type="text" id="username" name="username" class="form-control" placeholder="Enter username" autofocus="true" autocomplete="off" required>
     </div>
+    <!--span ng-show="loginForm.username.$dirty || loginForm.username.$error.required">username required</span></form><br-->
     <div class="form-group">
       <label for="password">Password</label>
       <input ng-model="password" type="password" id="password" name="password" class="form-control" placeholder="Enter password" required>
     </div>
+    <!--span ng-show="loginForm.password.$dirty || loginForm.password.$error.required">Password required</span><br-->
     <div class="form-group">
-      <button class="btn btn-primary" ng-click="login()">Log In</button>
+      <button type="submit" class="btn btn-primary">Log In</button>
     </div>
   </form>
 </div>

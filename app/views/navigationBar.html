@@ -1,4 +1,4 @@
- <nav class="navbar navbar-fixed-top">
+ <nav class="navbar navbar-fixed-top" ng-controller="">
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="navbar-brand" href="#">Inventory Management</a>
@@ -10,7 +10,7 @@
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <li><a ui-sref="profile"><i class="fa fa-user icons" aria-hidden="true"></i> Profile</a></li>
-      <li><a ui-sref="logout"><i class="fa fa-sign-out icons" aria-hidden="true"></i> Logout</a></li>
+      <li><a ng-click="logout()"><i class="fa fa-sign-out icons" aria-hidden="true"></i> Logout</a></li>
     </ul>
   </div>
 </nav>

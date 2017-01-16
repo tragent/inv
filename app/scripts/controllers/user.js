@@ -46,5 +46,5 @@ angular.module('minventoryApp')
         return "btn-danger";
       }
 
-    }
+    };
   }]);
