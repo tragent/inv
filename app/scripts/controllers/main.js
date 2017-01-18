@@ -8,20 +8,29 @@
  * Controller of the minventoryApp
  */
 angular.module('minventoryApp')
-  .controller('MainCtrl', ['$scope', '$http','$location', 'AuthenticationService', function ($scope, $http, $location, AuthenticationService){
-     $scope.login = function() {
+  .controller('MainCtrl', ['$rootScope','$scope', '$http','$location', 'AuthenticationService', function ($rootScope, $scope, $http, $location, AuthenticationService){
+     $scope.login = false;
+    // this.user;
+     this.login = function() {
+        console.log("Logging in");
         AuthenticationService.login(
-            $scope.username,
-            $scope.password,
+        $scope.username,
+        $scope.password,
             function(response){
+                $scope.login = true;
+               // $scope.user = response.data;
+                console.log(response.data);
+              //  alert($scope.user.username);
                 $location.path('/users');
-                console.log("success");
+                alert($scope.user.username);
+
             },
             function(response){
                 alert('Something went wrong with the login process. Try again later!');
             }
         );
     }
+   // console.log($scope.user);
 
     if(AuthenticationService.checkLog()){
         $location.path('/sales');
@@ -33,4 +42,7 @@ angular.module('minventoryApp')
         $location.path('/login');
         console.log("logout");
     }
+
+//$http.defaults.headers.common = ['Bearer' + AuthenticationService.getCurrentToken()];
+
   }]);

@@ -1,0 +1,46 @@
+<div style="margin-top: 10%">
+	<h2>
+		<span>New order</span>
+	</h2>
+
+	<div class="container-fluid">
+		<div class="col-md-6 col-md-offset-1 box" style="padding: 5%; float: none;">
+		<form name="purchaseForm" ng-submit="newPurchase()" novalidate>
+			<legend class="col-md-10 col-md-offset-1">New order</legend>
+			<div class="form-group col-md-12">
+				<div class="form-group col-md-10 col-md-offset-1">
+					<label for="supplier">Supplier :</label>
+					<select ng-model="purchase.supplier" class="form-control">
+					   <option>Nkep Kerlyn</option>
+					</select>
+				</div>
+			</div>
+			<div class="form-group col-md-12">
+				<div class="form-group col-md-10 col-md-offset-1">
+					<label for="product">Product :</label>
+					<select ng-model="purchase.product" class="form-control">
+					   <option>Coke (medium)</option>
+					</select>
+				</div>
+			</div>
+			<div class="form-group col-md-12">
+				<div class="form-group col-md-4 col-md-offset-1">
+					<label for="quantity">Quantity :</label>
+					<input type="number" class="form-control" name="quantity" 
+						ng-model="purchase.quantity" required autocomplete="off">
+					<span style="color: red" ng-show="purchaseForm.quantity.$error.required && submitted">
+						Quantity is required
+					</span>
+				</div>
+			</div>
+			<div>
+				<span class="">
+					<a type="reset" ng-click="clear()" class="btn btn-danger" style="margin-left: 30%">Clear</a>
+					<button type="submit" class="btn btn-primary" style="margin-left: 5%">Submit
+					</button>
+				</span>
+			</div>
+		</form>
+		</div>
+	</div>
+</div>

@@ -1,28 +1,37 @@
 <div style="margin-top: 7%">
 	<ol class="breadcrumb" style="font-size: 20px">
 	    <li><h2><a ui-sref="users">Users</a></h2></li>
-	    <li class="active">New user</li>
+	    <li class="active" ng-bind="currentUserAccount"></li>
 	</ol>
 
 	<div class="container-fluid box" style="padding: 5%">
-		<form class="col-md-12" name="userForm" novalidate>
+		<form class="col-md-12" name="userForm" ng-submit="manageUserAccount()" novalidate>
 		<div class="col-md-4 col-md-offset-1">
 			<div>
 				<img src="images/profilepic.png" id="profilePic">
 			</div>
 			<div class="form-group col-md-12">
 				<label for="username">Username :</label>
-				<input type="text" class="form-control" name="username" ng-model="user.username">
+				<input type="text" class="form-control" name="username" ng-model="user.username" required  autocomplete="off">
+				<span style="color: red" ng-show="userForm.username.$error.required && submitted">
+					Username is required
+				</span>
 			</div>
 		</div>
 		<div class="col-md-5">
 			<div class="form-group col-md-12">
 				<label for="firstName">First name :</label>
-				<input type="text" class="form-control" name="firstName" ng-model="user.firstName">
+				<input type="text" class="form-control" name="firstName" ng-model="user.firstName" required  autocomplete="off">
+				<span style="color: red" ng-show="userForm.firstName.$error.required && submitted">
+					First name is required
+				</span>
 			</div>
 			<div class="form-group col-md-12">
 				<label for="lastName">Last name :</label>
-				<input type="text" class="form-control" name="lastName" ng-model="user.lastName">
+				<input type="text" class="form-control" name="lastName" ng-model="user.lastName" required  autocomplete="off">
+				<span style="color: red" ng-show="userForm.lastName.$error.required && submitted">
+					Last name is required
+				</span>
 			</div>
 			<!---<div class="form-group col-md-12">
 				<label for="password">Password :</label>
@@ -30,21 +39,22 @@
 			</div> -->
 			<div class="form-group col-md-12">
 			    <label for="role">Role :</label>
-				<select ng-model="user.role" class="form-control">
-				   <option>Sales Agent</option>
+				<select ng-model="user.role" class="form-control" required  autocomplete="off">
+				   <option selected">Sales Agent</option>
 				</select>
 			</div>
 			<div class="form-group col-md-12">
 				<label for="telephone">Phone number :</label>
-				<input type="telephone" class="form-control" name="telephone" ng-model="user.telephone">
+				<input type="telephone" class="form-control" name="telephone" ng-model="user.telephone" required  autocomplete="off">
+				<span style="color: red" ng-show="userForm.telephone.$error.required && submitted">
+					mobile number is required
+				</span>
 			</div>
 		</div>
 		<div>
 			<span class="">
-				<button type="submit" class="btn btn-danger" style="margin-left: 30%">Cancel</button>
-				<button type="submit" class="btn btn-primary" style="margin-left: 5%" ng-bind="action">
-					<i class="fa fa-paper-plane" aria-hidden="true"></i>
-				</button>
+				<a type="reset" ui-sref="users" class="btn btn-danger" style="margin-left: 30%">Cancel</a>
+				<button type="submit" class="btn btn-primary" style="margin-left: 5%" ng-bind="action"></button>
 			</span>
 		</div>
 		</form>

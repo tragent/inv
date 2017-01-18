@@ -12,8 +12,8 @@ body {
 /* Side bar */
 .nav-side-menu {
   overflow: auto;
-  font-size: 16px;
-  font-weight: 200;
+  font-size: 17px;
+  font-weight: 100;
   background-color: #fff;
   position: fixed;
   top: 0px;
@@ -36,6 +36,7 @@ body {
   margin: 0px;
   line-height: 40px;
   cursor: pointer;
+  border-bottom: 1px solid #337ab7;
 }
 .nav-side-menu li a {
   text-decoration: none;
@@ -104,6 +105,11 @@ body {
 
 .navbar-nav li a, .navbar-header a {
   color: white;
+  cursor: pointer;
+}
+
+.dropdown-menu li a {
+  color: #337ab7;
 }
 
 .navbar-nav li.active a {
@@ -149,7 +155,7 @@ body {
 
 }
 
-.users {
+.suppliers, .customers, .users, .products {
   margin-top: 10%;
 }
 
@@ -165,6 +171,14 @@ tr {
 .search {
     padding: 10px 20px;
     border-radius: 0;
+}
+.btn {
+  padding: 10px 20px;
+  border-radius: 0;
+}
+.table-btn {
+  padding: 5px 10px;
+  border-radius: 0;
 }
 .box {
   margin: 50px auto;
@@ -206,4 +220,6 @@ tr {
 
 .btnSale {
   padding:5px 10px;
+  margin-left:15%;
+  border: 1px solid #B8B8B8 ;
 }

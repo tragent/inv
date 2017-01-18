@@ -1,0 +1,47 @@
+<div style="margin-top: 7%">
+	<ol class="breadcrumb" style="font-size: 20px">
+	    <li><h2><a ui-sref="customers">Customers</a></h2></li>
+	    <li class="active" ng-bind="currentCustomerAccount"></li>
+	</ol>
+
+	<div class="container-fluid box" style="padding: 5%">
+	<form name="customerForm" ng-submit="manageCustomerAccount()" novalidate>
+		<legend class="col-md-12" ng-bind="currentCustomerAccount"></legend>
+		<div class="form-group col-md-4 col-md-offset-2">
+			<label for="firstName">First name :</label>
+			<input type="text" class="form-control" name="firstName" ng-model="customer.firstName" required autocomplete="off">
+			<span style="color: red" ng-show="customerForm.telephone.$error.required && submitted">
+				First name is required
+			</span>
+		</div>
+		<div class="form-group col-md-4">
+			<label for="email">Email :</label>
+			<input type="email" class="form-control" name="email" ng-model="customer.email" autocomplete="off">
+			<span style="color: red" ng-show="customerForm.email.$error.email">
+				Invalid email address.
+			</span>
+			<span style="color: red" ng-show="customerForm.email.$error.required && submitted">
+				Email is required
+			</span>
+		</div>
+		<div class="form-group col-md-4 col-md-offset-2">
+			<label for="lastName">Last name :</label>
+			<input type="text" class="form-control" name="lastName" ng-model="customer.lastName" autocomplete="off">
+		</div>
+		<div class="form-group col-md-4">
+			<label for="telephone">Phone number :</label>
+			<input type="telephone" class="form-control" name="telephone" ng-model="customer.telephone" autocomplete="off">
+			<span style="color: red" ng-show="customerForm.telephone.$error.required && submitted">
+				Mobile number is required
+			</span>
+		</div>
+		<div>
+			<span>
+				<a ui-sref="customers" type="reset" class="btn btn-danger" style="margin-left: 30%">Cancel</a>
+				<button type="submit" class="btn btn-primary" style="margin-left: 5%" ng-bind="action">
+				</button>
+			</span>
+		</div>
+	</form>
+	</div>
+</div>

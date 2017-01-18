@@ -1,0 +1,55 @@
+<div class="contianer products">
+	<h2>
+		<span>Transactions</span>
+	</h2>
+	<!--<div class="row">
+      <div class="col-lg-offset-10 col-lg-4">
+        <a class="btn btn-primary">Create</a>
+      </div>
+  	</div>-->
+	<!-- Search bar -->
+	<div>
+	  <form name="searchForm" >
+	    <div class="form-group col-sm-7 col-sm-offset-2">
+	      <div class="input-group col-md-12">
+	        <input type="text" class="form-control input-lg" placeholder="Search for transaction" 
+	        	ng-model="search" />
+	        <span class="input-group-btn">
+	          <button class="btn btn-info btn-lg" type="submit">
+	            <i class="glyphicon glyphicon-search"></i>
+	          </button>
+	        </span>
+	      </div>
+	    </div>
+	  </form>
+	</div>
+
+	<!-- Table of products -->
+	<div class="table-responsive col-md-12 box">
+	<table class="table table-hover">
+	    <thead>
+	      <tr>
+	      	<th>No</th>
+	        <th>Transaction number</th>
+	        <th>Supplier</th>
+	        <th>Product</th>
+	        <th>Quantity</th>
+	        <th>Date</th>
+	        <th>Status</th>
+	      </tr>
+	    </thead>
+	    <tbody>
+	      <tr ng-repeat="transaction in transactions" ng-click="viewProduct(transaction.number)">
+	        <td>{{$index + 1}}</td>
+	        <td ng-bind="transaction.number"></td>
+	        <td ng-bind="transaction.supplier"></td>
+	        <td ng-bind="transaction.product"></td>
+	        <td ng-bind="transaction.quantity"></td>
+	        <td ng-bind="transaction.date"></td>
+	        <td ng-bind="transaction.status"></td>
+	      </tr>
+	    </tbody>
+  	</table>
+  	</div>
+
+</div>

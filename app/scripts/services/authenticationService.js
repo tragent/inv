@@ -10,6 +10,7 @@
 angular.module('minventoryApp')
 	.factory('AuthenticationService', ['$http', 'localStorageService', function($http, localStorageService) {
 		
+        var BASE_NAME = 'http://localhost:8080/api/v1/';
         /* Function to verify if user is logged in*/
 		
 		function checkLog() {
@@ -22,7 +23,7 @@ angular.module('minventoryApp')
         }
         /* Function to login*/
         function login(username, password, onSuccess, onError){
-	        $http.post('http://localhost:8080/api/v1/authenticate?username='+ username +'&password=' + password, 
+	        $http.post(BASE_NAME +'authenticate?username='+ username +'&password=' + password, 
 	        {
 	            username: username,
 	            password: password,
@@ -31,10 +32,12 @@ angular.module('minventoryApp')
                 console.log('sucess');
 	            localStorageService.set('token', response.headers('Authorization'));
 	            onSuccess(response);
+                // console.log(response.data.username);
 	        }, function(response) { 
 
 	            onError(response);
 	        });
+
     	}
         
     	/* Function to logout*/
@@ -51,6 +54,6 @@ angular.module('minventoryApp')
         	checkLog: checkLog,
         	login: login,
         	logout: logout,
-        	getCurrentToken: getCurrentToken
+        	getCurrentToken: getCurrentToken,
     	};
 	}]);

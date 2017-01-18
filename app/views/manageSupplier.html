@@ -1,0 +1,41 @@
+<div style="margin-top: 7%">
+	<ol class="breadcrumb" style="font-size: 20px">
+	    <li><h2><a ui-sref="suppliers">Suppliers</a></h2></li>
+	    <li class="active" ng-bind="currentSupplierAccount"></li>
+	</ol>
+
+	<div class="container-fluid box" style="padding: 5%">
+	<form name="supplierForm" ng-submit="manageSupplierAccount()" novalidate>
+		<legend class="col-md-12" ng-bind="currentSupplierAccount"></legend>
+		<div class="form-group col-md-8 col-md-offset-2">
+			<label for="name">Name :</label>
+			<input type="text" class="form-control" name="name" ng-model="supplier.name" required   autocomplete="off">
+			<span style="color: red" ng-show="supplierForm.name.$error.required && submitted">
+				Name is required
+			</span>
+		</div>
+		<div class="form-group col-md-5 col-md-offset-1">
+			<label for="email">Email :</label>
+			<input type="email" class="form-control" name="email" ng-model="supplier.email" required   autocomplete="off">
+			<span style="color: red" ng-show="supplierForm.name.$error.required && submitted">Email is required</span>
+			<span style="color: red" ng-show="supplierForm.name.$error.email && submitted">
+				Invalid email
+			</span>
+		</div>
+		<div class="form-group col-md-5">
+			<label for="telephone">Phone number :</label>
+			<input type="telephone" class="form-control" name="telephone" ng-model="supplier.telephone" required  autocomplete="off">
+			<span style="color: red" ng-show="supplierForm.name.$error.required && submitted">
+				Mobile number is required
+			</span>
+		</div>
+		<div>
+			<span>
+				<a ui-sref="suppliers" type="reset" class="btn btn-danger" style="margin-left: 40%">Cancel</a>
+				<button type="submit" class="btn btn-primary" style="margin-left: 5%" ng-bind="action">
+				</button>
+			</span>
+		</div>
+	</form>
+	</div>
+</div>
