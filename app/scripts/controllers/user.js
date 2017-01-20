@@ -8,12 +8,12 @@
  * Controller of the minventoryApp
  */
 angular.module('minventoryApp')
-  .controller('UserCtrl', ['$http','$scope', '$location', function ($http,$scope, $location){
-      var BASE_NAME = 'http://localhost:8080/api/v1/';
+  .controller('UserCtrl', ['$http','$scope', '$location', function ($http, $scope, $location){
+      var BASE_NAME = 'http://localhost:8080/api/v1';
       (function(){
         $http({
           method: 'GET',
-          url: BASE_NAME +'users/?lea',
+          url: BASE_NAME +'/users',
           headers: {
             'Content-Type': 'application/json'
           }

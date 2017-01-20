@@ -9,39 +9,51 @@
  */
 angular.module('minventoryApp')
   .controller('MainCtrl', ['$rootScope','$scope', '$http','$location', 'AuthenticationService', function ($rootScope, $scope, $http, $location, AuthenticationService){
-     $scope.login = false;
-    // this.user;
-     this.login = function() {
-        console.log("Logging in");
-        AuthenticationService.login(
-        $scope.username,
-        $scope.password,
-            function(response){
-                $scope.login = true;
-               // $scope.user = response.data;
-                console.log(response.data);
-              //  alert($scope.user.username);
-                $location.path('/users');
-                alert($scope.user.username);
+    
+    /* Declear default variables (if logged in and if form is submitted) */
+    $scope.loggedIn = false;
+    $scope.submitted = false;
+    
+    /* On submit login form */
+    this.login = function() {
 
-            },
-            function(response){
-                alert('Something went wrong with the login process. Try again later!');
-            }
+      $scope.submitted = true;
+
+      if ( $scope.username && $scope.password ) {
+
+        AuthenticationService.login(
+
+          $scope.username,
+          $scope.password,
+
+          /* Successful login */
+          function(response) {
+
+            $scope.loggedIn = true;
+            $rootScope.user = response.data;
+            console.log(response.data);
+            $location.path('/users');
+          },
+
+          /* Unsuccessful login */
+          function(response) {
+            $scope.loggedIn = false;
+            $scope.errorMessage = "Invalid userame or password";
+          }
+
         );
-    }
-   // console.log($scope.user);
+
+      }
+    };
 
     if(AuthenticationService.checkLog()){
         $location.path('/sales');
-        console.log("hihe");
     }
 
     $scope.logout = function(){
         AuthenticationService.logout();
         $location.path('/login');
-        console.log("logout");
-    }
+    };
 
 //$http.defaults.headers.common = ['Bearer' + AuthenticationService.getCurrentToken()];
 

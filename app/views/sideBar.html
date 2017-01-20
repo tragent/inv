@@ -4,7 +4,7 @@
   <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
   <div>
   <!-- nav bar to manage users -->
-  <div class="menu-list" ng-if="navBar() == 'user'">
+  <div class="menu-list" ng-if="sideBar() == 'user'">
     <ul id="menu-content" class="menu-content collapse out">
       <li ng-class="{ active: isActive('/users')}"><a ui-sref="users" > 
         <i class="fa fa-user " style="font-size: 20px" aria-hidden="true"></i>
@@ -22,7 +22,7 @@
   </div>
 
   <!-- navbar to manage purchase -->
-  <div class="menu-list" ng-if="navBar() == 'inventory'">
+  <div class="menu-list" ng-if="sideBar() == 'inventory'">
     <ul id="menu-content" class="menu-content collapse out">
       <li ng-class="{ active: isActive('/products')}"><a ui-sref="products" > 
         <i class="fa fa-lemon-o" style="font-size: 20px" aria-hidden="true"></i>
@@ -39,6 +39,16 @@
       <li ng-class="{ active: isActive('/transactions')}"><a ui-sref="purchaseTransactions">
         <i class="fa fa-exchange" style="font-size: 20px" aria-hidden="true"></i>
         <span style="padding-left: 2%">Transaction orders</span></a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- navbar to manage sales -->
+  <div class="menu-list" ng-if="sideBar() == 'sales'">
+    <ul id="menu-content" class="menu-content collapse out">
+      <li ng-class="{ active: isActive('/sales')}"><a ui-sref="products" > 
+        <i class="fa fa-lemon-o" style="font-size: 20px" aria-hidden="true"></i>
+        <span style="padding-left: 5%">Sales</span></a>
       </li>
     </ul>
   </div>

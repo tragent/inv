@@ -8,7 +8,7 @@
  * Controller of the minventoryApp
  */
 angular.module('minventoryApp')
-  .controller('ViewPurchaseTransactionsCtrl', ['$scope', '$stateParams', function ($scope, $stateParams){
+  .controller('ViewPurchaseTransactionsCtrl', ['$scope', function ($scope){
 
   	//Display clients data
   	$scope.transaction = {

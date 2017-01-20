@@ -2,6 +2,15 @@ body {
  background-color: #F0F0F0;
 }
 
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+  .container {
+    max-width: 70%;
+    margin-left: 20%
+  }
+
+}
+
 .browsehappy {
   margin: 0.2em 0;
   background: #ccc;
@@ -97,6 +106,9 @@ body {
 .icons {
    font-size: 16px;
 }
+.sales {
+  margin-left: 10%
+}
 
 /* Navigation bar*/
 .navbar {
@@ -144,15 +156,6 @@ body {
 
 .container-narrow > hr {
   margin: 30px 0;
-}
-
-/* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
-  .container {
-    max-width: 70%;
-    margin-left: 20%
-  }
-
 }
 
 .suppliers, .customers, .users, .products {

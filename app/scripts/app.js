@@ -111,13 +111,15 @@ angular
         };
 
         /* Determine which menu to display on side nav*/
-        $rootScope.navBar = function (){
+        $rootScope.sideBar = function (){
           if( ($location.path().search("/products") >= 0) || ($location.path().search("/inventory") >= 0) ||
            ($location.path().search("/purchase") >= 0) || ($location.path().search("/transactions") >= 0)) {
               return "inventory";
           } else if ( ($location.path().search("/users") >= 0) || ($location.path().search("/customers") >= 0) || 
             ($location.path().search("/suppliers") >= 0)) {
             return "user";
+          } else if ( ($location.path() !== '/login') && ($location.path().search("/sales") >= 0) ){
+            return "sales";
           }
         };
   });

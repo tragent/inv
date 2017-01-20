@@ -29,8 +29,9 @@ angular.module('minventoryApp')
 	            password: password,
 	        }).
 	        then(function(response) {
-                console.log('sucess');
+               // $http.defaults.headers.common['Authorization'] = response.headers('Authorization');
 	            localStorageService.set('token', response.headers('Authorization'));
+                console.log(response.headers('Authorization'));
 	            onSuccess(response);
                 // console.log(response.data.username);
 	        }, function(response) { 
