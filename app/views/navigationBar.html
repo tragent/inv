@@ -1,4 +1,4 @@
- <nav class="navbar navbar-fixed-top">
+ <nav class="navbar navbar-fixed-top" ng-controller="MainCtrl">
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="navbar-brand" href="#">Inventory Management</a>
@@ -12,7 +12,7 @@
       <li class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown">
           <img style="-webkit-filter: invert(100%);" src="images/profilepic.png" width="20" height="20">
-          <span>{{user.username}}</span> 
+          <span ng-show="user()"></span> 
         </a>
         <ul class="dropdown-menu">
           <li><a ui-sref="profile"><i class="fa fa-user icons" aria-hidden="true"></i> Profile</a></li>

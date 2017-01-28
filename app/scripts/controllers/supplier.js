@@ -8,7 +8,7 @@
  * Controller of the minventoryApp
  */
 angular.module('minventoryApp')
-  .controller('SupplierCtrl', ['$scope', '$location', function ($scope, $location){
+  .controller('SupplierCtrl', ['$scope', '$location','Restangular','AuthorizationService', function ($scope, $location, Restangular ,AuthorizationService){
 
   	// Array of users
     $scope.suppliers = [{
@@ -30,4 +30,5 @@ angular.module('minventoryApp')
       $location.path('/suppliers/' + supplierId);
     };
 
+Restangular.setDefaultHeaders({ 'Authorization' : 'Bearer ' + AuthorizationService.getCurrentToken() });
   }]);

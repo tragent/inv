@@ -50,7 +50,19 @@
         <i class="fa fa-lemon-o" style="font-size: 20px" aria-hidden="true"></i>
         <span style="padding-left: 5%">Sales</span></a>
       </li>
-    </ul>
+      <li ng-class="{ active: isActive('/report')}"><a ui-sref="report" > 
+        <i class="fa fa-lemon-o" style="font-size: 20px" aria-hidden="true"></i>
+        <span style="padding-left: 5%">Report</span></a>
+      </li>
+      <li ng-class="{ active: isActive('/receipt')}"><a ui-sref="receipt" > 
+        <i class="fa fa-lemon-o" style="font-size: 20px" aria-hidden="true"></i>
+        <span style="padding-left: 5%">Receipt</span></a>
+      </li>
+    </ul><br><br>
+      <button class="btn btn-primary totalPrice">
+        <p>Get total<i class="fa fa-total"></i></p>
+      </button>
+  </div>
   </div>
   </div>
 </div>

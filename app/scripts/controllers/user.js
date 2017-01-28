@@ -8,7 +8,7 @@
  * Controller of the minventoryApp
  */
 angular.module('minventoryApp')
-  .controller('UserCtrl', ['$http','$scope', '$location', function ($http, $scope, $location){
+  .controller('UserCtrl', ['$http','$scope', '$location','Restangular','AuthorizationService', function ($http, $scope, $location,Restangular,AuthorizationService){
       var BASE_NAME = 'http://localhost:8080/api/v1';
       (function(){
         $http({
@@ -68,5 +68,5 @@ angular.module('minventoryApp')
     $scope.activateUser = function(enable){
 
      };
-   
+   Restangular.setDefaultHeaders({ 'Authorization' : 'Bearer ' + AuthorizationService.getCurrentToken() });
   }]);

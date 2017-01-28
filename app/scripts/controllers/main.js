@@ -47,7 +47,7 @@ angular.module('minventoryApp')
     };
 
     if(AuthenticationService.checkLog()){
-        $location.path('/sales');
+        $location.path('/users');
     }
 
     $scope.logout = function(){
@@ -55,6 +55,8 @@ angular.module('minventoryApp')
         $location.path('/login');
     };
 
-//$http.defaults.headers.common = ['Bearer' + AuthenticationService.getCurrentToken()];
-
+    $scope.user = function(){
+      AuthenticationService.getCurrentUser();
+      console.log(AuthenticationService.getCurrentUser());
+    }
   }]);

@@ -29,11 +29,12 @@ angular.module('minventoryApp')
 	            password: password,
 	        }).
 	        then(function(response) {
-               // $http.defaults.headers.common['Authorization'] = response.headers('Authorization');
 	            localStorageService.set('token', response.headers('Authorization'));
+                localStorageService.set('user', response.data.username);
                 console.log(response.headers('Authorization'));
+                console.log(response.data.username);
 	            onSuccess(response);
-                // console.log(response.data.username);
+                console.log(response.data.username);
 	        }, function(response) { 
 
 	            onError(response);
@@ -44,6 +45,8 @@ angular.module('minventoryApp')
     	/* Function to logout*/
     	function logout(){
         	localStorageService.remove('token');
+            localStorageService.remove('user');
+
     	}
 
     	/* Function to get current token*/
@@ -51,10 +54,15 @@ angular.module('minventoryApp')
         	return localStorageService.get('token');
     	}
 
+        function getCurrentUser(){
+            return localStorageService.get('user');
+        }
+
     	return {
         	checkLog: checkLog,
         	login: login,
         	logout: logout,
         	getCurrentToken: getCurrentToken,
+            getCurrentUser: getCurrentUser,
     	};
 	}]);
