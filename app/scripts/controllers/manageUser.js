@@ -8,28 +8,34 @@
  * Controller of the minventoryApp
  */
 angular.module('minventoryApp')
-  .controller('ManageUserCtrl', ['$scope', '$stateParams', function ($scope, $stateParams){
+  .controller('ManageUserCtrl', ['$scope', '$stateParams', 'UserService', 'RoleService', '$location', '$window', function ($scope, $stateParams, UserService, RoleService, $location, $window){
 
     //Default params
-    $scope.submitted = false;
+    $scope.submitted = false; 
+
+    // Get all roles in the system
+      RoleService.getAllRoles(
+
+        // Got all roles
+        function(response){
+          $scope.roles = response.data;
+        }
+      );
 
   	//check if state parameter is set
   	if ($stateParams.id) {
 
-  		//Display clients data
-  		$scope.user = {
-              id : 1,
-              firstName : "Nkep",
-              lastName : "Kerlyn",
-              username : "Kerlyn",
-              email : "nkepkerlyn@gmail.com",
-              telephone : "(+237) 671 514 344",
-              role : "Sales agent"
-            };
+      // Get user's information
+      UserService.getUserById( $stateParams.id,
 
-        // Display value for an exist user
-        $scope.action = "Update";
-        $scope.currentUserAccount = $scope.user.username;
+        // Got all users
+        function(response){
+          $scope.user = response.data;
+          $scope.currentUserAccount = $scope.user.username;
+          $scope.action = "Update";
+          console.log($scope.user);
+        }
+      );
 
   	} else {
   		// Display empty input fields
@@ -48,12 +54,46 @@ angular.module('minventoryApp')
   	}
 
     // Update or create a user on submit form
-    $scope.manageUserAccount = function(){
+    $scope.manageUserAccount = function() {
+
       $scope.submitted = true;
       if ($scope.userForm.$valid) {
-        console.log("user form is valid " + $scope.user.role);
+
+        console.log($scope.user);
+        if ($stateParams.id) {
+
+          // Update user's information
+          UserService.updateUserAccount( $scope.user,
+
+          // Updated user's information
+          function(){
+            $location.path('/users');
+          },
+
+          // Fail to update user's account
+          function() {
+            $window.alert("We have a server error.. Please try again letter");
+          }
+        );
+        } else {
+            
+          $scope.user.id='';
+          // Create user's account
+          UserService.createUser( $scope.user,
+            // Created user's account
+            function(){
+              $location.path('/users');
+            },
+
+            // Fail to create user's account
+            function() {
+              $window.alert("We have a server error.. Please try again letter");
+            }
+          );
+        }
+
       } else {
-        console.log("user form is invalid");
+        $window.alert("user form is invalid");
       }
           
     };

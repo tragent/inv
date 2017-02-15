@@ -31,12 +31,8 @@ angular.module('minventoryApp')
 	        then(function(response) {
 	            localStorageService.set('token', response.headers('Authorization'));
                 localStorageService.set('user', response.data.username);
-                console.log(response.headers('Authorization'));
-                console.log(response.data.username);
-	            onSuccess(response);
-                console.log(response.data.username);
+	            onSuccess(response.headers('Authorization'));
 	        }, function(response) { 
-
 	            onError(response);
 	        });
 
@@ -54,6 +50,7 @@ angular.module('minventoryApp')
         	return localStorageService.get('token');
     	}
 
+        /* Function to get current user*/
         function getCurrentUser(){
             return localStorageService.get('user');
         }

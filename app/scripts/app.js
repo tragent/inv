@@ -19,11 +19,15 @@ angular
     'ui.router'
   ])
   .config(['$stateProvider','$urlRouterProvider', '$httpProvider', function ($stateProvider,$urlRouterProvider,$httpProvider) {
+    
+    // Set headers and enable CORS
     $httpProvider.defaults.headers.common = {};
     $httpProvider.defaults.headers.post = {};
-    $httpProvider.defaults.headers.put = {};
     $httpProvider.defaults.headers.get = {};
+    $httpProvider.defaults.headers.delete = {};
+    $httpProvider.defaults.headers.put = {};
     $httpProvider.defaults.headers.patch = {};
+
     $urlRouterProvider.otherwise('/login');
     $stateProvider
        .state('login',{

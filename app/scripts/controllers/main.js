@@ -27,16 +27,14 @@ angular.module('minventoryApp')
           $scope.password,
 
           /* Successful login */
-          function(response) {
+          function() {
 
             $scope.loggedIn = true;
-            $rootScope.user = response.data;
-            console.log(response.data);
             $location.path('/users');
           },
 
           /* Unsuccessful login */
-          function(response) {
+          function() {
             $scope.loggedIn = false;
             $scope.errorMessage = "Invalid userame or password";
           }
@@ -58,5 +56,5 @@ angular.module('minventoryApp')
     $scope.user = function(){
       AuthenticationService.getCurrentUser();
       console.log(AuthenticationService.getCurrentUser());
-    }
+    };
   }]);
