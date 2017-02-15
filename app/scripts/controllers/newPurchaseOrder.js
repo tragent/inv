@@ -23,12 +23,12 @@ angular.module('minventoryApp')
     		console.log("transaction unsuccessful");	
     	}
 
-    }
+    };
 
     // Clear form
     $scope.clear = function(){
     	$scope.purchase.supplier = "";
     	$scope.purchase.product = "";
     	$scope.purchase.quantity = "";
-    }
+    };
 }]);

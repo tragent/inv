@@ -22,10 +22,11 @@
     <![endif]-->
 
     <div ng-include="'/views/navigationBar.html'" ng-if="location.path() !== '/login'"></div>
-    <div ng-include="'/views/sideBar.html'" ng-if="(location.path() !== '/login')"></div>
-    <div class="container">
+    <div ng-include="'/views/sideBar.html'" ng-if="(location.path() !== '/login') && (location.path() !== '/sales')"></div>
+    <div class="container" ng-class="{ sales: isActive('/sales')}" style="">
       <div ui-view=""></div>
     </div>
+      <div ng-include="'/views/sideBar.html'" ng-if="(location.path() !== '/login') && (location.path() == '/sales')" style=" float: right; padding-right: 17% "></div>
 
     <div class="footer">
       <div class="container">
@@ -66,12 +67,16 @@
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
         <script src="scripts/services/authenticationService.js"></script>
+        <script src="scripts/services/saleService.js"></script>
+        <script src="scripts/services/userService.js"></script>   
+        <script src="scripts/services/roleService.js"></script>
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/user.js"></script>
         <script src="scripts/controllers/product.js"></script>
         <script src="scripts/controllers/customer.js"></script>
         <script src="scripts/controllers/supplier.js"></script>
         <script src="scripts/controllers/manageUser.js"></script>
+        <script src="scripts/controllers/sales.js"></script>
         <script src="scripts/controllers/manageCustomer.js"></script>
         <script src="scripts/controllers/manageSupplier.js"></script>
         <script src="scripts/controllers/manageProduct.js"></script>

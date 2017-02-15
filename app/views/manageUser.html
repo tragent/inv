@@ -1,7 +1,7 @@
 <div style="margin-top: 7%">
 	<ol class="breadcrumb" style="font-size: 20px">
 	    <li><h2><a ui-sref="users">Users</a></h2></li>
-	    <li class="active" ng-bind="currentUserAccount"></li>
+	    <li class="active" ng-bind="currentUserAccount" ></li>
 	</ol>
 
 	<div class="container-fluid box" style="padding: 5%">
@@ -17,6 +17,13 @@
 					Username is required
 				</span>
 			</div>
+			<div class="form-group col-md-12" ng-if="action == 'Submit'">
+				<label for="password">Password :</label>
+				<input type="password" class="form-control" name="password" ng-model="user.password" required  autocomplete="off">
+				<span style="color: red" ng-show="userForm.password.$error.required && submitted">
+					Password is required
+				</span>
+			</div> 
 		</div>
 		<div class="col-md-5">
 			<div class="form-group col-md-12">
@@ -39,15 +46,15 @@
 			</div> -->
 			<div class="form-group col-md-12">
 			    <label for="role">Role :</label>
-				<select ng-model="user.role" class="form-control" required  autocomplete="off">
-				   <option selected">Sales Agent</option>
-				</select>
+			    <span ng-model="user.role.name" ></span>
+				<select ng-model="user.role" class="form-control" ng-options="role.name for role in roles" required  autocomplete="off">
+				</select>	
 			</div>
 			<div class="form-group col-md-12">
-				<label for="telephone">Phone number :</label>
-				<input type="telephone" class="form-control" name="telephone" ng-model="user.telephone" required  autocomplete="off">
-				<span style="color: red" ng-show="userForm.telephone.$error.required && submitted">
-					mobile number is required
+				<label for="email">Email :</label>
+				<input type="email" class="form-control" name="email" ng-model="user.email" required  autocomplete="off">
+				<span style="color: red" ng-show="userForm.email.$error.required && submitted">
+					Email is required
 				</span>
 			</div>
 		</div>
@@ -59,5 +66,4 @@
 		</div>
 		</form>
 	</div>
-	
 </div>

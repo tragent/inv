@@ -2,6 +2,15 @@ body {
  background-color: #F0F0F0;
 }
 
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+  .container {
+    max-width: 70%;
+    margin-left: 20%
+  }
+
+}
+
 .browsehappy {
   margin: 0.2em 0;
   background: #ccc;
@@ -97,6 +106,9 @@ body {
 .icons {
    font-size: 16px;
 }
+.sales {
+  margin-left: 10%
+}
 
 /* Navigation bar*/
 .navbar {
@@ -146,15 +158,6 @@ body {
   margin: 30px 0;
 }
 
-/* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
-  .container {
-    max-width: 70%;
-    margin-left: 20%
-  }
-
-}
-
 .suppliers, .customers, .users, .products {
   margin-top: 10%;
 }
@@ -167,6 +170,10 @@ table {
 tr {
   font-size: 16px;
   cursor: pointer;
+}
+.search {
+    padding: 10px 20px;
+    border-radius: 0;
 }
 .btn {
   padding: 10px 20px;
@@ -187,6 +194,39 @@ tr {
   width: 70%;
   height: 70%;
   margin-bottom: 5%;
+  margin-left:15%
+}
+
+/*Sales page*/
+
+#saleSearch {
+  padding-top: 5%;
+}
+
+#salesHeader {
+  margin-left: 2%;
+}
+
+.salesProduct {
+  margin-top: 10%;
+  
+
+}
+
+.addProduct {
+  width: 20%;
+  height: 2.5em;
+  text-align: right;
+  border-radius: 5%;
+
+}
+
+.btnSale {
+  padding:5px 10px;
   margin-left:15%;
   border: 1px solid #B8B8B8 ;
+}
+
+.totalPrice {
+  margin-left: 25%;
 }

@@ -1,3 +1,4 @@
+
 <div class="contianer users">
 	<h2>
 		<span>Users</span>
@@ -35,7 +36,6 @@
 	        <th>Name</th>
 	        <th>Username</th>
 	        <th>Email</th>
-	        <th>Phone number</th>
 	        <th>Role</th>
 	      </tr>
 	    </thead>
@@ -45,10 +45,10 @@
 	        <td ng-bind="(user.firstName) + ' ' + (user.lastName)"></td>
 	        <td ng-bind="user.username"></td>
 	        <td ng-bind="user.email"></td>
-	        <td ng-bind="user.telephone"></td>
-	        <td ng-bind="user.role"></td>
+	        <td ng-if="user.role.name == 'ROLE_SALES_AGENT'	">Sales agent</td>  
+	        <td ng-if="user.role.name == 'ROLE_MANAGER'	">Manager</td>
 	        <td>
-	        	<button type="submit" ng-class="isActive(user.enable)" ng-click="activateUser(user.enable)" class="btn table-btn" ng-bind="enable"></button>
+	        	<button type="submit" ng-class="isActive(user.accountEnabled)" ng-click="activateUser(user.id)" class="btn table-btn" ng-bind="enable"></button>
 	        </td>
 	      </tr>
 	    </tbody>

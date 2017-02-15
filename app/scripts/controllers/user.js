@@ -8,53 +8,44 @@
  * Controller of the minventoryApp
  */
 angular.module('minventoryApp')
-  .controller('UserCtrl', ['$scope', '$location', function ($scope, $location){
-    
-    // Array of users
-    $scope.users = [{
-                      id : 1,
-                      firstName : "Nkep",
-                      lastName : "Kerlyn",
-                      username : "Kerlyn",
-                      email : "nkepkerlyn@gmail.com",
-                      telephone : "(+237) 671 514 344",
-                      role : "Sales agent",
-                      enable : true
-                    },
-                    {
-                      id : 2,
-                      firstName : "Kengne",
-                      lastName : "Grace",
-                      username : "Grace",
-                      email : "graceruphine@gmail.com",
-                      telephone : "(+237) 675 734 571",
-                      role : "Manager",
-                      enable : false
-                    }];
+  .controller('UserCtrl', ['$http','$scope', '$location','UserService', '$window', function ($http, $scope, $location, UserService, $window){
+
+      UserService.getAllUsers(
+
+        // Got all users
+        function(response){
+          $scope.users = response.data;
+        }
+      );
 
     // redirect to edit page when row is clicked
-    $scope.editUser = function(userId){
+    $scope.editUser = function(userId) {
       $location.path('/users/' + userId);
     };
 
     // Set color and content of button for an enable/disable user account
-    $scope.isActive = function (enable){
+    $scope.isActive = function (enable) {
 
       if (enable) {
-        $scope.enable = "Enable";
+        $scope.enable = "Enabled";
         return "btn-primary";
       } else {
-        $scope.enable = "Disable";
+        $scope.enable = "Disabled";
         return "btn-danger";
       }
 
     };
 
     //Update activation of a user's account
-    $scope.activateUser = function(enable){
+    $scope.activateUser = function(userId) {
 
-      // code to update user's 
+        $window.alert("Are you sure you want to de-activate user's account");
 
-    };
-
-  }]);
+        UserService.De_ActivateAccount( userId,
+        // Got all users
+        function(response){
+          $location.path('/users');
+        }
+      );
+     }; 
+   }]);

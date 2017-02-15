@@ -19,8 +19,12 @@ angular
     'ui.router'
   ])
   .config(['$stateProvider','$urlRouterProvider', '$httpProvider', function ($stateProvider,$urlRouterProvider,$httpProvider) {
+    
+    // Set headers and enable CORS
     $httpProvider.defaults.headers.common = {};
     $httpProvider.defaults.headers.post = {};
+    $httpProvider.defaults.headers.get = {};
+    $httpProvider.defaults.headers.delete = {};
     $httpProvider.defaults.headers.put = {};
     $httpProvider.defaults.headers.patch = {};
 
@@ -42,6 +46,11 @@ angular
         url: '/users/:id',
         templateUrl:'views/manageUser.html',
         controller: 'ManageUserCtrl'
+      })
+       .state('sales', {
+        url: '/sales',
+        templateUrl:'views/sales.html',
+        controller: ''
       })
       .state('customers', {
         url: '/customers',
@@ -92,7 +101,7 @@ angular
         url: '/transactions/:id',
         templateUrl:'views/viewPurchaseTransactions.html',
         controller: 'ViewPurchaseTransactionsCtrl'
-      })
+      });
   }])
   .run(function($rootScope, $location){
         $rootScope.location = $location;
@@ -106,13 +115,15 @@ angular
         };
 
         /* Determine which menu to display on side nav*/
-        $rootScope.navBar = function (){
+        $rootScope.sideBar = function (){
           if( ($location.path().search("/products") >= 0) || ($location.path().search("/inventory") >= 0) ||
            ($location.path().search("/purchase") >= 0) || ($location.path().search("/transactions") >= 0)) {
               return "inventory";
           } else if ( ($location.path().search("/users") >= 0) || ($location.path().search("/customers") >= 0) || 
             ($location.path().search("/suppliers") >= 0)) {
             return "user";
+          } else if ( ($location.path() !== '/login') && ($location.path().search("/sales") >= 0) ){
+            return "sales";
           }
         };
   });
